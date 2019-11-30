@@ -23,7 +23,7 @@ function createNewGroup(x) {
         });
     }
     else{
-        const newGroup = Math.random().toString(36).substring(2,14);
+        const newGroup = Math.random().toString(36).substring(2,32);
         firebase.firestore().collection(newGroup).get().then(sub => {
             newGroupExists = sub.docs.length;
             if (newGroupExists > 0) {
