@@ -23,7 +23,7 @@ function createNewGroup(x) {
         });
     }
     else{
-        const newGroup = Math.random().toString(36).substring(2,32);
+        const newGroup = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         firebase.firestore().collection(newGroup).get().then(sub => {
             newGroupExists = sub.docs.length;
             if (newGroupExists > 0) {
@@ -35,7 +35,7 @@ function createNewGroup(x) {
                     signIn();
                 }
                 if (isUserSignedIn() === true){
-                    window.location.replace("http://app.evaapp.xyz/chat?g=" + newGroup);
+                    window.location.replace("https://app.evaapp.xyz/chat?g=" + newGroup);
                 }
             }
         });
