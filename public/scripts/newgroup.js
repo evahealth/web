@@ -35,7 +35,7 @@ function createNewGroup(x) {
                     signIn();
                 }
                 if (isUserSignedIn() === true){
-                    window.location.replace("http://chatterr.net/chat?g=" + newGroup);
+                    window.location.replace("http://app.evaapp.xyz/chat?g=" + newGroup);
                 }
             }
         });
