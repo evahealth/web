@@ -1,0 +1,1003 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-right {
+    display: none;
+}
+
+.navbar-item {
+    color: #ffffff;
+    padding: 10px;
+}
+
+.navbar-item:hover {
+    color: #58d5f7;
+    text-decoration: none;
+}
+
+.hero-background {
+    overflow: hidden;
+    position: relative;
+    background: -webkit-linear-gradient(117deg, rgb(96, 87, 246), rgb(216, 71, 99));
+    background: linear-gradient(117deg, rgb(96, 87, 246), rgb(216, 71, 99));
+    background: -webkit-radial-gradient(rgb(194, 74, 126), rgb(105, 86, 235));
+    background: radial-gradient(rgb(194, 74, 126), rgb(105, 86, 235));
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.header {
+    padding-top: 10px;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    z-index: 999;
+}
+
+.logo {
+    max-width: 250px;
+    padding-left: 0;
+}
+.header-btn {
+    background-color: #71DA77;
+    border-radius: 10px;
+    border: #5C5C5C;
+    float: right;
+    width: 195px;
+    height: 51px;
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin-top: -10px;
+}
+
+.header-btn:hover {
+    background-color: #5C5C5C;
+    color: white;
+    border-radius: 20px;
+    -webkit-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    -moz-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+}
+
+.hero {
+    position: relative;
+    z-index: 999;
+}
+
+.mouse {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 85%;
+    margin: auto;
+    padding-bottom: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .4s ease;
+}
+
+.mouse:hover {
+    transform: translateY(5px);
+}
+
+.macbook {
+    margin: auto;
+    padding-bottom: 35px;
+}
+
+.hero-right {
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.ipad {
+    display: none;
+}
+
+.ipad-screen {
+    display: none;
+}
+
+.hero-btn {
+    position: relative;
+    top: 10px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    background-color: #71DA77;
+    border-radius: 10px;
+    border: 1px solid #71DA77;
+    width: 275px;
+    height: 40px;
+    color: white;
+    margin: 30px auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.hero-btn:hover {
+    background-color: #5C5C5C;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid #5C5C5C;
+    -webkit-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    -moz-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    position: relative;
+    top: 10px;
+}
+
+
+#new-group-btn {
+    position: relative;
+    top: 100px;
+}
+
+
+
+.button-class {
+    position: relative;
+}
+
+.header-headline {
+    padding-top: 0;
+    max-width: 500px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.header-running-text {
+    text-align: center;
+    max-width: 500px;
+    line-height: 1.5;
+    margin: auto;
+}
+
+.logos-section {
+    background-color: #F9FAFA;
+    text-align: center;
+}
+
+.logos {
+    padding: 30px;
+    max-width: 100%;
+}
+
+.features-section {
+    background-color: #5C5C5C;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.features-headline {
+    color: white;
+    padding-bottom: 30px;
+}
+
+.features-container {
+    max-width: 830px;
+    margin: auto;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px;
+}
+
+.feature-no-display {
+    opacity: 0;
+    -webkit-transform: translateY(15%) translateZ(0);
+    -moz-transform: translateY(15%) translateZ(0);
+    transform: translateY(15%) translateZ(0);
+    -webkit-transition: -webkit-transform 0.4s ease-out, opacity 0.4s ease;
+    -moz-transition: -moz-transform 0.4s ease-out, opacity 0.4s ease;
+    -o-transition: -o-transform 0.4s ease-out, opacity 0.4s ease;
+    transition: transform 0.4s ease-out, opacity 0.4s ease;
+}
+
+.feature-display {
+    opacity: 1;
+    -webkit-transform: translateY(0) translateZ(0);
+    -moz-transform: translateY(0) translateZ(0);
+    transform: translateY(0) translateZ(0);
+}
+
+.feature-display-mid {
+    transition-delay: 0.15s;
+}
+
+.feature-display-last {
+    transition-delay: 0.30s;
+}
+
+.feature-icon {
+    background-color: white;
+    border-radius: 50%;
+    height: 5.625em;
+    width: 5.625em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    box-shadow: 4px 14px 28px #393939;
+}
+
+.feature-head-text {
+    color: white;
+    padding-top: 15px;
+}
+
+.feature-subtext {
+    color: white;
+    padding-top: 0;
+}
+
+.feature-img {
+    max-width: 23px;
+}
+
+.white-section {
+    max-width: 1400px;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+.white-section-text {
+    text-align: center;
+}
+
+.imac {
+}
+
+.imac-section-header {
+    padding-bottom: 35px;
+}
+
+.imac-section-desc {
+    text-align: center;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 40px;
+    max-width: 400px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.imac-screen {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.macbook {
+    position: relative;
+    z-index: 999;
+}
+
+.pricing-background {
+    background-color: #F8F9F9;
+}
+
+.pricing-section-header {
+    padding-top: 10px;
+}
+
+.pricing-section-sub {
+    padding-top: 10px;
+    color: grey;
+}
+
+.pricing-table {
+    padding: 0 0 10px;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.plan {
+    text-align: center;
+    max-width: 390px;
+    margin: auto;
+    height: 430px;
+    padding: 36px 15px 45px;
+    position: relative;
+}
+
+.mid-plan {
+    text-align: center;
+    max-width: 390px;
+    margin: auto;
+    height: 10px;
+    padding: 36px 15px 45px;
+    position: relative;
+    box-shadow: 5px 8.7px 40px rgba(99, 117, 138, 0.3);
+    border-radius: 7px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.plan li {
+    position: relative;
+}
+
+.plan li::before, .mid-plan li:before {
+    font-family: Material Icons;
+    content: "check";
+    color: #3aeb8c;
+    left: -10px;
+    position: relative;
+
+}
+
+.plan-title {
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.plan-cost {
+    font-size: 45px;
+}
+
+.plan-cost::before {
+    content: "$";
+}
+
+.monthly {
+    font-size: 12px;
+    padding-bottom: 20px;
+}
+
+.plan-features {
+    -webkit-padding-start: 0;
+}
+
+.plan-btn {
+    background-color: #0ABCEB;
+    border-radius: 10px;
+    border: #0ABCEB;
+    width: 164px;
+    height: 51px;
+    color: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    display: block;
+    padding: 15px;
+    margin: auto;
+    position: absolute;
+    left: calc(50% - 82px);
+    bottom: 50px;
+}
+
+.plan-btn:hover {
+    background-color: #58d5f7;
+    color: white;
+    border-radius: 20px;
+    -webkit-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    -moz-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+}
+
+.team {
+    padding-bottom: 50px;
+    padding-top: 60px;
+}
+
+.team-container {
+    text-align: center;
+    margin: auto;
+    max-width: 920px;
+}
+
+.team-section-header {
+    padding-bottom: 90px;
+}
+
+.team-member {
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.team-member-position {
+    color: #747474;
+}
+
+.team-member-text {
+    padding-top: 25px;
+}
+
+.team-social-icon {
+    padding: 7px;
+}
+
+.blue-section {
+    background-color: #0ABCEB;
+    color: white;
+    margin: auto;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 40px;
+}
+
+.blue-section-subtext {
+    max-width: 200px;
+    max-width: 250px;
+    line-height: 22px;
+    font-size: 15px;
+    margin: auto;
+}
+
+.email-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email-input {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    width: 210px;
+    height: 51px;
+    color: #808080;
+    margin-top: 20px;
+    border: none;
+}
+
+.submit-btn {
+    background-color: #25F18B;
+    border-radius: 10px;
+    color: #fff;
+    height: 51px;
+    width: 120px;
+    margin-top: 20px;
+    margin-left: 3px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+.submit-btn:hover {
+    background-color: #6affb4;
+    color: white;
+    border-radius: 20px;
+    -webkit-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    -moz-box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+    box-shadow: -1px 9px 46px -17px rgba(43, 43, 43, 1);
+}
+
+#newsletter-spinner {
+    display: none;
+}
+
+
+.create-group-btn {
+    position: relative;
+    top: 500px;
+}
+
+
+
+.email-form-div {
+    max-width: 60px;
+    margin: auto;
+}
+
+.footer {
+    background-color: #464646;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.webscope-text {
+    color: white;
+    font-size: 12px;
+    padding-right: 7px;
+}
+
+.webscope {
+    text-align: center;
+    margin-top: -5px;
+}
+
+.social-links {
+    float: none;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.social-link {
+    margin-right: 15px;
+}
+
+.strips {
+    position: absolute;
+    max-width: 1280px;
+}
+
+/*
+* The r-text-field component
+*/
+
+/*
+The component will reset input browser styles
+*/
+
+.r-text-field{
+    --uiTextFieldPlaceholderColor: var(--textFieldPlaceholderColor);
+
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border-radius: 0;
+    border-style: solid;
+}
+
+.r-text-field::-webkit-input-placeholder{
+    color: var(--uiTextFieldPlaceholderColor);
+}
+
+.r-text-field::-moz-placeholder{
+    opacity: 1;
+    color: var(--uiTextFieldPlaceholderColor);
+}
+
+.r-text-field:invalid{
+    outline: none;
+    box-shadow: none;
+}
+
+/*
+* The r-button component
+*/
+
+/*
+The component will reset button browser styles
+*/
+
+.r-button{
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Remove the inner border and padding in Firefox. */
+
+.r-button::-moz-focus-inner,
+.r-button[type="button"]::-moz-focus-inner,
+.r-button[type="reset"]::-moz-focus-inner,
+.r-button[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+
+/*
+* The a-field component
+*/
+
+/*
+ 1. The --aFieldHeight option defines an input height. And this option is needed for calculations of a hint final position
+ 2. The --aFieldHintFinalCoordinate option defines calculations of the final Y-axis coordinate
+ 3. The —aFieldPaddingLeft option defines left indent for a hint and query text
+*/
+
+.a-field{
+    --uiaFieldHeight: var(--aFieldHeight);
+    --uiaFieldHintFinalCoordinate: var(--aFieldHintFinalCoordinate, var(--uiaFieldHeight));
+    --uiaFieldPaddingLeft: var(--aFieldPaddingLeft);
+
+    position: relative;
+    padding-top: calc(var(--uiaFieldHintFinalCoordinate) - var(--uiaFieldHeight)); /* 1, 2 */
+}
+
+.a-field__input{
+    box-sizing: border-box;
+    height: var(--uiaFieldHeight); /* 1 */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: var(--uiaFieldPaddingLeft); /* 3 */
+}
+
+.a-field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+}
+
+.a-field__input::-moz-placeholder{
+    opacity: 0;
+}
+
+.a-field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+}
+
+.a-field__input:focus::-moz-placeholder{
+    opacity: 1;
+}
+
+.a-field__label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiaFieldHeight);	/* 1 */
+
+    pointer-events: none;
+    cursor: text;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.a-field__label{
+    position: absolute;
+    left: var(--uiaFieldPaddingLeft); /* 3 */
+    bottom: calc(50% - .5em);
+    line-height: 1;
+    pointer-events: none;
+}
+
+/*
+  I needed to create an animation onle Chromium broswers because:
+  1. Firefox doesn't support a placeholder animation
+  2. I couldn't make an correct animation at Edge
+*/
+
+@supports (-webkit-appearance: none){
+
+    .a-field__label{
+        transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+        will-change: bottom, opacity;
+    }
+}
+
+/* If a user had inserted a text of query a hint will be hidden */
+
+.a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+    opacity: 0;
+    bottom: 85%;
+}
+
+/* If the focal point is a field a hint will be displayed */
+
+.a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--uiaFieldHintFinalCoordinate); /* 2 */
+}
+
+/*
+* the search component
+*/
+
+
+/*
+* The r-text-field component
+*/
+
+/*
+The component will reset input browser styles
+*/
+
+.r-text-field{
+    --uiTextFieldPlaceholderColor: var(--textFieldPlaceholderColor);
+
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border-radius: 0;
+    border-style: solid;
+}
+
+.r-text-field::-webkit-input-placeholder{
+    color: var(--uiTextFieldPlaceholderColor);
+}
+
+.r-text-field::-moz-placeholder{
+    opacity: 1;
+    color: var(--uiTextFieldPlaceholderColor);
+}
+
+.r-text-field:invalid{
+    outline: none;
+    box-shadow: none;
+}
+
+/*
+* The r-button component
+*/
+
+/*
+The component will reset button browser styles
+*/
+
+
+
+/*
+* The a-field component
+*/
+
+/*
+ 1. The --aFieldHeight option defines an input height. And this option is needed for calculations of a hint final position
+ 2. The --aFieldHintFinalCoordinate option defines calculations of the final Y-axis coordinate
+ 3. The —aFieldPaddingLeft option defines left indent for a hint and query text
+*/
+
+.a-field{
+    --uiaFieldHeight: var(--aFieldHeight);
+    --uiaFieldHintFinalCoordinate: var(--aFieldHintFinalCoordinate, var(--uiaFieldHeight));
+    --uiaFieldPaddingLeft: var(--aFieldPaddingLeft);
+
+    position: relative;
+    padding-top: calc(var(--uiaFieldHintFinalCoordinate) - var(--uiaFieldHeight)); /* 1, 2 */
+}
+
+.a-field__input{
+    box-sizing: border-box;
+    height: var(--uiaFieldHeight); /* 1 */
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: var(--uiaFieldPaddingLeft); /* 3 */
+}
+
+.a-field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+}
+
+.a-field__input::-moz-placeholder{
+    opacity: 0;
+}
+
+.a-field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+}
+
+.a-field__input:focus::-moz-placeholder{
+    opacity: 1;
+}
+
+.a-field__label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiaFieldHeight);	/* 1 */
+
+    pointer-events: none;
+    cursor: text;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.a-field__label{
+    position: absolute;
+    left: var(--uiaFieldPaddingLeft); /* 3 */
+    bottom: calc(50% - .5em);
+    line-height: 1;
+    pointer-events: none;
+}
+
+/*
+  I needed to create an animation onle Chromium broswers because:
+  1. Firefox doesn't support a placeholder animation
+  2. I couldn't make an correct animation at Edge
+*/
+
+@supports (-webkit-appearance: none){
+
+    .a-field__label{
+        transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+        will-change: bottom, opacity;
+    }
+}
+
+/* If a user had inserted a text of query a hint will be hidden */
+
+.a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+    opacity: 0;
+    bottom: 85%;
+}
+
+/* If the focal point is a field a hint will be displayed */
+
+.a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--uiaFieldHintFinalCoordinate); /* 2 */
+}
+
+/*
+* the search component
+*/
+
+*
+{
+    outline: none;
+}
+
+html, body
+{
+    height: 100%;
+    min-height: 100%;
+}
+
+body
+{
+    margin: 0;
+    background-color: #ffd8d8;
+}
+
+.tb
+{
+    display: table;
+    width: 100%;
+}
+
+.td
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input, button
+{
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 550px;
+    padding: 35px;
+    margin: -83px auto 0 auto;
+    background-color: #ff7575;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+    transform: scale(0.6);
+}
+
+form
+{
+    height: 96px;
+}
+
+input[type="text"]
+{
+    width: 100%;
+    height: 96px;
+    font-size: 60px;
+    line-height: 1;
+}
+
+input[type="text"]::placeholder
+{
+    color: #e16868;
+}
+
+#s-cover
+{
+    width: 1px;
+    padding-left: 35px;
+}
+
+button
+{
+    position: relative;
+    display: block;
+    width: 84px;
+    height: 96px;
+    cursor: pointer;
+}
+
+#s-circle
+{
+    position: relative;
+    top: -8px;
+    left: 0;
+    width: 43px;
+    height: 43px;
+    margin-top: 0;
+    border-width: 15px;
+    border: 15px solid #fff;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 0.5s ease all;
+}
+
+button span
+{
+    position: absolute;
+    top: 68px;
+    left: 43px;
+    display: block;
+    width: 45px;
+    height: 15px;
+    background-color: transparent;
+    border-radius: 10px;
+    transform: rotateZ(52deg);
+    transition: 0.5s ease all;
+}
+
+button span:before, button span:after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    transform: rotateZ(0);
+    transition: 0.5s ease all;
+}
+
+#s-cover:hover #s-circle
+{
+    top: -1px;
+    width: 67px;
+    height: 15px;
+    border-width: 0;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#s-cover:hover span
+{
+    top: 50%;
+    left: 56px;
+    width: 25px;
+    margin-top: -9px;
+    transform: rotateZ(0);
+}
+
+#s-cover:hover button span:before
+{
+    bottom: 11px;
+    transform: rotateZ(52deg);
+}
+
+#s-cover:hover button span:after
+{
+    bottom: -11px;
+    transform: rotateZ(-52deg);
+}
+#s-cover:hover button span:before, #s-cover:hover button span:after
+{
+    right: -6px;
+    width: 40px;
+    background-color: #fff;
+}
+
+
