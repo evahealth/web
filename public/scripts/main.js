@@ -77,6 +77,18 @@ function loadMessages() {
   });
 }
 
+//Check if image has nudez
+function checkNudes(nudeUrl) {
+  nudeApi = "https://api.sightengine.com/1.0/check.json?models=nudity&api_user=1956623496&api_secret=XCP4Bpx89aLoaEmbdJXE&url=" + nudeUrl;
+  $.get(nudeApi, function (nudesReturn) {
+    console.log(nudesReturn);
+      if (nudesReturn.nudity.raw > 0.69) {
+        console.log("bruh moment, why you send this")
+        return true;
+      }
+  });
+}
+
 // Saves a new message containing an image in Firebase.
 // This first saves the image in Firebase storage.
 function saveImageMessage(file) {
@@ -92,11 +104,23 @@ function saveImageMessage(file) {
     return firebase.storage().ref(filePath).put(file).then(function(fileSnapshot) {
       // 3 - Generate a public URL for the file.
       return fileSnapshot.ref.getDownloadURL().then((url) => {
-        // 4 - Update the chat message placeholder with the image's URL.
+
+      //4 - check against p0rn, more will be added
+        if (checkNudes(url) == true) {
+          //if it's porn, replace it with a blacked-out image
+          return messageRef.update({
+            imageUrl: "https://user-images.githubusercontent.com/7539174/70025524-26c27080-1552-11ea-9fc4-2ad9f56adaa0.png",
+            storageUri: fileSnapshot.metadata.fullPath
+          });
+        }
+        else {
+          //not p0rn
+        // 5 - Update the chat message placeholder with the image's URL.
         return messageRef.update({
           imageUrl: url,
           storageUri: fileSnapshot.metadata.fullPath
         });
+      }
       });
     });
   }).catch(function(error) {
