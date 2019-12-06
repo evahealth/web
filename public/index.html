@@ -40,26 +40,10 @@
 
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script defer src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"/>
-
-    <script>
-                //Handle Account Status
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    window.location = 'https://app.evaapp.xyz/dashboard.html'; //After successful login, user will be redirected to Dashboard
-  }
-});
-
-        let yobama = getParameterByName('so');
-    if(yobama != null){
-        console.log("show signed out snaccbar")
-        var MDCSnackbar = mdc.snackbar.MDCSnackbar;
-        MDCSnackbar(document.getElementById('signed-out-snacc'))
-    }</script>
 </head>
 
 <body class ="">
@@ -99,6 +83,7 @@ firebase.auth().onAuthStateChanged(user => {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="scripts/accounts.js"></script>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <script>
     window.onload = function () {
                 //Handle Account Status
@@ -111,6 +96,20 @@ firebase.auth().onAuthStateChanged(user => {
       instaDash();
     };
 </script>
+  <script>
+        //Handle Account Status
+firebase.auth().onAuthStateChanged(user => {
+if (user) {
+window.location = 'https://app.evaapp.xyz/dashboard.html'; //After successful login, user will be redirected to Dashboard
+}
+});
+
+let yobama = getParameterByName('so');
+if(yobama != null){
+console.log("show signed out snaccbar")
+var MDCSnackbar = mdc.snackbar.MDCSnackbar;
+MDCSnackbar(document.getElementById('signed-out-snacc'))
+}</script>
 </body>
 
 </html>
