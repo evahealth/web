@@ -1,0 +1,81 @@
+        #color-me-mom {
+            background: #FAFAFA;
+        }
+
+        ::-webkit-input-placeholder {
+            color:white;
+        }
+    
+        ::-moz-placeholder {
+            color:white;
+        }
+    
+        ::-ms-placeholder {
+            color:white;
+        }
+    
+        ::placeholder {
+            color:white;
+        }
+
+        #joe {
+            max-width: 416px;
+    display: block;
+    margin: 0 auto;
+        }
+
+        #tellmesignin1 {
+            font-family: 'Lexend Deca', sans-serif;
+            margin-bottom: 26px;
+        }
+    
+        #lolzcat {
+            height: 100vh;
+            display: flex;
+        }
+
+        @media (min-width: 960px) {
+            #lolzcat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+            }
+            #joe {
+                position: absolute;
+            top: 50%;
+          transform: translateY(-50%);
+}
+
+        input[class=asdf], select {
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 5px solid white;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: small;
+            width: 20px;
+        }
+    
+        .label-boi {
+            font-size: 12px;
+            width: 275px;
+        }
+    
+        body {
+            overflow: hidden;
+            font-family: 'Lexend Deca', 'Helvetica Neue', sans-serif;
+        }
+
+        .login-relax-img {
+            background-image: url("https://app.evaapp.xyz/images/naian-wang-F9wrh2miJLA-unsplash.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }

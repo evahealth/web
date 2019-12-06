@@ -1,103 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<style>
-
-
-    ::-webkit-input-placeholder {
-        color:white;
-    }
-
-    ::-moz-placeholder {
-        color:white;
-    }
-
-    ::-ms-placeholder {
-        color:white;
-    }
-
-    ::placeholder {
-        color:white;
-    }
-
-
-    input[class=asdf], select {
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 5px solid white;
-        border-radius: 12px;
-        box-sizing: border-box;
-        font-family: Montserrat,sans-serif;
-        font-size: small;
-        width: 20px;
-    }
-
-    input[class=EASTER_EGG] {
-        width: 100%;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    input[class=EASTER_EGG]:hover {
-        background-color: #45a049;
-        color: #45a049;
-    }
-
-    .label-boi {
-        font-size: 12px;
-        width: 275px;
-    }
-
-
-    body {
-        overflow: hidden;
-    }
-</style>
-
-
-
-<script>
-    window.localStorage.setItem("value1", "start");
-    var userType = window.localStorage.getItem("value1");
-    //var userType = "start";
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-    let g = getParameterByName('g');
-    let w = window.location.href;
-    if (w === 'https://chatterr.net'){
-        window.location.replace("chatterr.net/?")
-    }
-    g = g.toLowerCase();
-    if(g != null){
-        window.location.replace("chat?g="+ g);
-    }
-</script>
-
-<script src="/__/firebase/6.6.0/firebase-app.js"></script>
-<script src="/__/firebase/6.6.0/firebase-auth.js"></script>
-<script src="/__/firebase/6.6.0/firebase-storage.js"></script>
-<script src="/__/firebase/6.6.0/firebase-messaging.js"></script>
-<script src="/__/firebase/6.6.0/firebase-firestore.js"></script>
-<script src="/__/firebase/6.6.0/firebase-performance.js"></script>
-<script src="/__/firebase/init.js"></script>
-
-
-
 <head>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Open+Sans&display=swap" rel="stylesheet">
+        <link href="styles/index.css" rel="stylesheet">
+    
+    
+    <script>
+        window.localStorage.setItem("value1", "start");
+        var userType = window.localStorage.getItem("value1");
+        //var userType = "start";
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
+    
+    <script src="/__/firebase/6.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,66 +38,79 @@
     <meta name="Nova theme" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script defer src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="stylesheet" href="styles/responsive.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css"/>
 
+    <script>
+                //Handle Account Status
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    window.location = 'https://app.evaapp.xyz/dashboard.html'; //After successful login, user will be redirected to Dashboard
+  }
+});
+
+        let yobama = getParameterByName('so');
+    if(yobama != null){
+        console.log("show signed out snaccbar")
+        var MDCSnackbar = mdc.snackbar.MDCSnackbar;
+        MDCSnackbar(document.getElementById('signed-out-snacc'))
+    }</script>
 </head>
 
-<body class ="hero-background">
-
-<!-- Navigation
-    ================================================== -->
-<div>
-    <div>
-        <img class="strips" src="images/strips.png">
+<body class ="">
+        <div class="mdc-snackbar mdc-snackbar--leading" id='signed-out-snacc'>
+                Sign out successful.
+              </div>
+        <div class="container-fluid">
+                <div class="row">
+                <div class="col-md-3 login-relax-img d-none d-md-block bg-dark text-white"></div>
+                <div class="col-md-9 col-sm-12" id='color-me-mom'><div id='lolzcat'><div id='joe'><div>
+                    <h2 id='tellmesignin1'>Sign in to Eva</h2>
+        <button class="mdc-button mdc-button--unelevated" onclick="joeMumSignIn('google')" style='background:#3988f2;'>
+                <div class="mdc-button__ripple"></div>
+                        <svg style="mdc-button__icon width:18px;height:18px;padding-right: 8px;" viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#ffffff" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+</svg>
+                <span class="mdc-button__label">Sign in with Google</span>
+              </button>
+        <button class="mdc-button mdc-button--outlined" onclick="joeMumSignIn('fb')"  style='background:#1A237E;'>
+                 <div class="mdc-button__ripple"></div>
+                        <svg style="width:18px;height:18px mdc-button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="#fff" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
+                            </svg>
+                  </button>
+        <button class="mdc-button mdc-button--outlined" onclick="joeMumSignIn('github')" style='background:#FAFAFA'>
+                    <div class="mdc-button__ripple"></div>
+                            <svg class="mdi mdc-button__icon" aria-hidden="true" viewBox="0 0 24 24" style="margin-right: 0px;margin-left: 0px;">
+                                    <path fill="#424242" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                                </svg>
+              </button>
+              <hr><p>By signing in, you agree to our <a href='https://evaapp.xyz/privacy.html'>privacy policy</a> and <a href='https://evaapp.xyz/tos.html'>terms of service</a>.</p>
+        </div></div></div></div></div>
     </div>
-    <div class="container">
-        <div class="header-container header">
-            <a class="navbar-brand logo" href="https://chatterr.net"> <img class="logo" src="images/chatterr.png"/> </a>
-        </div>
-        <!--navigation-->
+    </div>
 
-        <script src="scripts/newgroup.js"></script>
-        <!-- Hero-Section
-          ================================================== -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="scripts/accounts.js"></script>
+<script>
+    window.onload = function () {
+                //Handle Account Status
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    window.location = 'https://app.evaapp.xyz/dashboard.html'; //After successful login, user will be redirected to Dashboard
+  }
+});
 
-        <div class="hero row">
-            <div class="hero-right col-sm-6 col-sm-6">
-
-                <h1 class="header-headline bold"> Welcome to Chatterr. </h1>
-                <h4 class="header-running-text light"> Chat with friends, communicate with colleagues, or interact with a professor. The possibilities are endless. <br><br></h4>
-                <!-- ======================================================================================================================================= -->
-
-                <form action="chat.html">
-                    <label class="label-boi" for="searchie" >Enter Your Chatterr Group Address Here</label><input class="asdf" type="text" id="searchie" name="g">
-                </form>
-                <br>
-                <button class="hero-btn" onclick="createNewGroup()"> OR Create A New Group Here</button>
-
-
-
-
-
-            </div><!--hero-left-->
-
-
-            <div class="col-sm-6 col-sm-6 ipad">
-                <img class="ipad-screen img-responsive" src="images/chatterr_logo_full.png"/>
-            </div>
-
-        </div><!--hero-->
-
-    </div> <!--hero-container-->
-
-</div><!--hero-background-->
-
+      instaDash();
+    };
+</script>
 </body>
 
 </html>

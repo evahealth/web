@@ -2,7 +2,7 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
-    "lint": "",
+    "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
     "serve": "firebase serve --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
@@ -10,16 +10,17 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
-    "@google-cloud/vision": "^1.7.1",
+    "@google-cloud/vision": "^1.7.2",
     "@grpc/proto-loader": "^0.5.2",
     "child-process-promise": "^2.2.1",
-    "firebase-admin": "~8.4.0",
+    "firebase-admin": "^8.8.0",
     "firebase-functions": "^3.2.0",
     "firebase-tools": "^7.8.1",
-    "grpc": "^1.23.3"
+    "grpc": "^1.23.3",
+    "mkdirp-promise": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "^5.12.0",

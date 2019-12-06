@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+
+
+        ::-webkit-input-placeholder {
+            color:white;
+        }
+    
+        ::-moz-placeholder {
+            color:white;
+        }
+    
+        ::-ms-placeholder {
+            color:white;
+        }
+    
+        ::placeholder {
+            color:white;
+        }
+    
+    
+        input[class=asdf], select {
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 5px solid white;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-family: Montserrat,sans-serif;
+            font-size: small;
+            width: 20px;
+        }
+    
+        input[class=EASTER_EGG] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        input[class=EASTER_EGG]:hover {
+            background-color: #45a049;
+            color: #45a049;
+        }
+    
+        .label-boi {
+            font-size: 12px;
+            width: 275px;
+        }
+    
+    
+        body {
+            overflow: hidden;
+        }
+    </style>
+    
+    
+    
+    <script>
+        window.localStorage.setItem("value1", "start");
+        var userType = window.localStorage.getItem("value1");
+        //var userType = "start";
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        let g = getParameterByName('g');
+        let w = window.location.href;
+        if (w === 'https://chatterr.net'){
+            window.location.replace("chatterr.net/?")
+        }
+        g = g.toLowerCase();
+        if(g != null){
+            window.location.replace("chat?g="+ g);
+        }
+    </script>
+    
+    <script src="/__/firebase/6.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.6.0/firebase-performance.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    
+
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eva</title>
+    <meta name="Nova theme" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="styles/responsive.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+
+<body class ="hero-background">
+
+<!-- Navigation
+    ================================================== -->
+<div>
+    <div>
+        <img class="strips" src="images/strips.png">
+    </div>
+    <div class="container">
+        <div class="header-container header">
+            <a class="navbar-brand logo" href="https://chatterr.net"> <img class="logo" src="images/chatterr.png"/> </a>
+        </div>
+        <!--navigation-->
+
+        <script src="scripts/newgroup.js"></script>
+        <!-- Hero-Section
+          ================================================== -->
+
+        <div class="hero row">
+            <div class="hero-right col-sm-6 col-sm-6">
+
+                <h1 class="header-headline bold"> Welcome to Chatterr. </h1>
+                <h4 class="header-running-text light"> Chat with friends, communicate with colleagues, or interact with a professor. The possibilities are endless. <br><br></h4>
+                <!-- ======================================================================================================================================= -->
+
+                <form action="chat.html">
+                    <label class="label-boi" for="searchie" >Enter Your Chatterr Group Address Here</label><input class="asdf" type="text" id="searchie" name="g">
+                </form>
+                <br>
+                <button class="hero-btn" onclick="createNewGroup()"> OR Create A New Group Here</button>
+
+
+
+
+
+            </div><!--hero-left-->
+
+
+            <div class="col-sm-6 col-sm-6 ipad">
+                <img class="ipad-screen img-responsive" src="images/chatterr_logo_full.png"/>
+            </div>
+
+        </div><!--hero-->
+
+    </div> <!--hero-container-->
+
+</div><!--hero-background-->
+
+</body>
+
+</html>
