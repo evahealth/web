@@ -10,3 +10,11 @@ topAppBar.setScrollTarget(document.querySelector('.main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {
   drawer.open = !drawer.open;
 });
+
+function replaceTherapy() {
+  document.getElementById("nevergonnagiveuup").innerHTML = "Find Therapists"
+}
+
+function replaceTutor() {
+  document.getElementById("nevergonnagiveuup").innerHTML = "Find Tutor"
+}

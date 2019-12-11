@@ -37,7 +37,7 @@
 <header class="mdc-top-app-bar">
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <button class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons" href="#">menu</button>
+            <button class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons" onclick='drawer.open = !drawer.open;'>menu</button>
             <a class="mdc-top-app-bar__title" href="https://www.webdenim.io" target="_blank" style="color: inherit;font-family: 'Lexend Deca';">Eva</a>
           </section>
         </div>
@@ -89,18 +89,23 @@
 
         <!--start tutor html-->
         <div>
+          <div class='jfrwirwwuowrorw '>
         <button class="mdc-button mdc-button--raised" style="background:#536dfe">
                 <div class="mdc-button__ripple"></div>
                 <span class="mdi mdi-teach mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;margin-bottom: 10px;color:#ffffff;"></span>
-                <span class="mdc-button__label">Find Tutors</span>
+                <span class="mdc-button__label" id='nevergonnagiveuup'>Find Tutors</span>
               </button>
+              
 
-              <button class="mdc-button mdc-button--outlined">
+              <button class="mdc-button mdc-button--outlined"  style="position: absolute; right: 16px;">
                     <div class="mdc-button__ripple"></div>
                     <span class="mdi mdi-forum-outline mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;margin-bottom: 10px;color:#6200ee;"></span>
                     <span class="mdc-button__label">Ask Eva</span>
                   </button>
-        <!--end tutor html-->
+        <!--end tutor html--></div>
+
+                
+
         </div>
 
       </div>
