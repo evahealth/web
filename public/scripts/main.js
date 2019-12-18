@@ -9,7 +9,7 @@ function signIn() {
 function signOut() {
   // Sign out of Firebase.
   firebase.auth().signOut();
-  window.location = 'https://evaapp.xyz';
+  window.location = 'https://app.evaapp.xyz';
 }
 
 // Initiate firebase auth.
@@ -32,12 +32,15 @@ function getUserName() {
 function isUserSignedIn() {
   return !!firebase.auth().currentUser;
 }
-firebase.firestore().collection(groups_).get().then(sub => {
+
+var chatRoomDir = firebase.firestore().collection("rooms").doc("chat");
+
+chatRoomDir.collection(groups_).get().then(sub => {
   newGroupExists = sub.docs.length;
   if (newGroupExists === 0) {
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    saveMessage('Welcome to Chatterrrrrrrr!').then(function() {
-      // Clear message text field and re-enable the SEND button.
+  saveMessage('New Group Created on Eva!').then(function() {
+       //Clear message text field and re-enable the SEND button.
       resetMaterialTextfield(messageInputElement);
       toggleButton();
     });
@@ -47,7 +50,7 @@ firebase.firestore().collection(groups_).get().then(sub => {
 // Saves a new message on the Firebase DB.
 function saveMessage(messageText) {
   // Add a new message entry to the Firebase database.
-  return firebase.firestore().collection(groups_).add({
+  return chatRoomDir.collection(groups_).add({
     name: getUserName(),
     text: messageText,
     profilePicUrl: getProfilePicUrl(),
@@ -60,7 +63,7 @@ function saveMessage(messageText) {
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
   // Create the query to load the last 12 messages and listen for new ones.
-  var query = firebase.firestore()
+  var query = chatRoomDir
       .collection(groups_)
       .orderBy('timestamp', 'desc')
       .limit(12);
@@ -82,7 +85,7 @@ function loadMessages() {
 // This first saves the image in Firebase storage.
 function saveImageMessage(file) {
   // 1 - We add a message with a loading icon that will get updated with the shared image.
-  firebase.firestore().collection(groups_).add({
+  chatRoomDir.collection(groups_).add({
     name: getUserName(),
     imageUrl: LOADING_IMAGE_URL,
     profilePicUrl: getProfilePicUrl(),

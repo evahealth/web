@@ -1,10 +1,3 @@
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
 /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  *
@@ -60,6 +53,7 @@ exports.blurOffensiveImages = functions.storage.object().onFinalize(async (objec
   // Docs: https://cloud.google.com/vision/docs/reference/rpc/google.cloud.vision.v1#google.cloud.vision.v1.SafeSearchAnnotation
   if (
     safeSearch.adult !== VERY_UNLIKELY ||
+    safeSearch.spoof !== VERY_UNLIKELY ||
     safeSearch.medical !== VERY_UNLIKELY ||
     safeSearch.violence !== VERY_UNLIKELY ||
     safeSearch.racy !== VERY_UNLIKELY
@@ -80,20 +74,20 @@ async function blurImage(filePath, bucketName, metadata) {
   const bucket = admin.storage().bucket(bucketName);
 
   // Create the temp directory where the storage file will be downloaded.
-  //await mkdirp(tempLocalDir);
-  //console.log('Temporary directory has been created', tempLocalDir);
+  await mkdirp(tempLocalDir);
+  console.log('Temporary directory has been created', tempLocalDir);
 
   // Download file from bucket.
-  await bucket.file("bad-replace.png").download({destination: "bad-replace.png"});
-  console.log('The file has been downloaded to', "bad-replace.png");
+  await bucket.file(filePath).download({destination: tempLocalFile});
+  console.log('The file has been downloaded to', tempLocalFile);
 
   // Blur the image using ImageMagick.
-  //await spawn('convert', [tempLocalFile, '-channel', 'RGBA', '-blur', '0x16', tempLocalFile]);
-  //console.log('Blurred image created at', tempLocalFile);
-  
-  // Uploading the replacement image.
-  await bucket.upload("bad-replace.png", {
-    destination: filePath,
+  await spawn('convert', [tempLocalFile, '-channel', 'RGBA', '-blur', '0x8', tempLocalFile]);
+  console.log('Blurred image created at', tempLocalFile);
+
+  // Uploading the Blurred image.
+  await bucket.upload(tempLocalFile, {
+    destination: `${BLURRED_FOLDER}/${filePath}`,
     metadata: {metadata: metadata}, // Keeping custom metadata.
   });
   console.log('Blurred image uploaded to Storage at', filePath);

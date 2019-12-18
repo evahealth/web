@@ -18,3 +18,19 @@ function replaceTherapy() {
 function replaceTutor() {
   document.getElementById("nevergonnagiveuup").innerHTML = "Find Tutor"
 }
+
+// Returns the signed-in user's display name.
+function getUserName() {
+  return firebase.auth().currentUser.displayName;
+}
+
+function writeToUserAccountTest(testingxkcd) {
+  firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("testing").add({
+    name: getUserName(),
+    text: testingxkcd,
+    chatid: "hi chat id goes here",
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  }).catch(function(error) {
+    console.error('Error writing new message to Database', error);
+  });
+}
