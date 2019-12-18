@@ -60,13 +60,17 @@ function saveMessage(messageText) {
   });
 }
 
+//Set Query Value to 32 messages on each load:
+var maxMsgQueryEachTime = 32;
+var initQueryValue = 128;
+
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
-  // Create the query to load the last 12 messages and listen for new ones.
+  // Create the query to load the last 128 messages and listen for new ones.
   var query = chatRoomDir
       .collection(groups_)
       .orderBy('timestamp', 'desc')
-      .limit(12);
+      .limit(initQueryValue);
   // Start listening to the query.
   query.onSnapshot(function(snapshot) {
     snapshot.docChanges().forEach(function(change) {
@@ -80,6 +84,15 @@ function loadMessages() {
     });
   });
 }
+
+$("#messages").scroll(function() {
+  if($("#messages").scrollTop() == 0) {
+      console.log("user has scrolled to the top of the chat window");
+       if ($('#messages').children().length > 31) {
+
+       }
+    }
+});
 
 // Saves a new message containing an image in Firebase.
 // This first saves the image in Firebase storage.
@@ -389,3 +402,15 @@ firebase.performance();
 
 // We load currently existing chat messages and listen to new ones.
 loadMessages();
+
+$.fn.isHScrollable = function () {
+  return this[0].scrollWidth > this[0].clientWidth;
+};
+
+$.fn.isVScrollable = function () {
+  return this[0].scrollHeight > this[0].clientHeight;
+};
+
+$.fn.isScrollable = function () {
+  return this[0].scrollWidth > this[0].clientWidth || this[0].scrollHeight > this[0].clientHeight;
+};
