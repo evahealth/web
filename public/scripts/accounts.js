@@ -17,13 +17,16 @@ function isUserSignedIn() {
 
 function signInMain(chooseProvider) {
     if (chooseProvider == "google") {     // Sign into Firebase using popup auth & Google as the identity provider.
-    var provider = new firebase.auth.GoogleAuthProvider();
+        provider = new firebase.auth.GoogleAuthProvider();
     }
     if (chooseProvider == "fb") {
-    var provider = new firebase.auth.FacebookAuthProvider();
+        provider = new firebase.auth.FacebookAuthProvider();
     }
     if (chooseProvider == "github") {
-        var provider = new firebase.auth.GithubAuthProvider();
+        provider = new firebase.auth.GithubAuthProvider();
+    }
+    if (chooseProvider == "twitter") {
+        provider = new firebase.auth.TwitterAuthProvider();
     }
     firebase.auth().signInWithPopup(provider);
 }
