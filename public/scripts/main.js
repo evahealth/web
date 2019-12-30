@@ -62,7 +62,7 @@ function saveMessage(messageText) {
 
 //Set Query Value to 32 messages on each load:
 var maxMsgQueryEachTime = 32;
-var initQueryValue = 128;
+var initQueryValue = 256;
 
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
