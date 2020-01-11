@@ -36,7 +36,11 @@ function writeToUserAccountTest(testingxkcd) {
 }
 
 function signOutOfDash() {
-  // Sign out of Firebase.
-  firebase.auth().signOut();
-  window.location = 'https://app.evaapp.xyz';
+  firebase.auth().signOut().then(function() {
+    window.location = 'https://app.evaapp.xyz';
+  }).catch(function(error) {
+    // An error happened.
+    console.log("Sign Out Error!");
+    console.log(error);
+  });
 }
