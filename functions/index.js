@@ -1,98 +1,57 @@
 /**
- * Copyright 2016 Google Inc. All Rights Reserved.
+ * Copyright 2017 Google Inc. All Rights Reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for t`he specific language governing permissions and
+ * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-'use strict';
 
+// [START presence_sync_function]
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-const mkdirp = require('mkdirp-promise');
-const vision = require('@google-cloud/vision');
-const spawn = require('child-process-promise').spawn;
-const path = require('path');
-const os = require('os');
-const fs = require('fs');
 
-const VERY_UNLIKELY = 'VERY_UNLIKELY';
-const BLURRED_FOLDER = 'blurred';
+// Since this code will be running in the Cloud Functions environment
+// we call initialize Firestore without any arguments because it
+// detects authentication from the environment.
+const firestore = admin.firestore();
 
-/**
- * When an image is uploaded we check if it is flagged as Adult or Violence by the Cloud Vision
- * API and if it is we blur it using ImageMagick.
- */
-exports.blurOffensiveImages = functions.storage.object().onFinalize(async (object) => {
-  // Ignore things we've already blurred
-  if (object.name.startsWith(`${BLURRED_FOLDER}/`)) {
-    console.log(`Ignoring upload "${object.name}" because it was already blurred.`);
-    return null;
-  }
-  
-  // Check the image content using the Cloud Vision API.
-  const visionClient = new vision.ImageAnnotatorClient();
-  const data = await visionClient.safeSearchDetection(
-    `gs://${object.bucket}/${object.name}`
-  );
+// Create a new function which is triggered on changes to /status/{uid}
+// Note: This is a Realtime Database trigger, *not* Cloud Firestore.
+exports.onUserStatusChanged = functions.database.ref('/status/{uid}').onUpdate(
+    async (change, context) => {
+      // Get the data written to Realtime Database
+      const eventStatus = change.after.val();
 
-  const safeSearch = data[0].safeSearchAnnotation;
-  console.log('SafeSearch results on image', safeSearch);
+      // Then use other event data to create a reference to the
+      // corresponding Firestore document.
+      const userStatusFirestoreRef = firestore.doc(`status/${context.params.uid}`);
 
-  // Tune these detection likelihoods to suit your app.
-  // The current settings show the most strict configuration
-  // Docs: https://cloud.google.com/vision/docs/reference/rpc/google.cloud.vision.v1#google.cloud.vision.v1.SafeSearchAnnotation
-  if (
-    safeSearch.adult !== VERY_UNLIKELY ||
-    safeSearch.spoof !== VERY_UNLIKELY ||
-    safeSearch.medical !== VERY_UNLIKELY ||
-    safeSearch.violence !== VERY_UNLIKELY ||
-    safeSearch.racy !== VERY_UNLIKELY
-  ) {
-    console.log('Offensive image found. Blurring.');
-    return blurImage(object.name, object.bucket, object.metadata);
-  }
+      // It is likely that the Realtime Database change that triggered
+      // this event has already been overwritten by a fast change in
+      // online / offline status, so we'll re-read the current data
+      // and compare the timestamps.
+      const statusSnapshot = await change.after.ref.once('value');
+      const status = statusSnapshot.val();
+      console.log(status, eventStatus);
+      // If the current timestamp for this data is newer than
+      // the data that triggered this event, we exit this function.
+      if (status.last_changed > eventStatus.last_changed) {
+        return null;
+      }
 
-  return null;
-});
+      // Otherwise, we convert the last_changed field to a Date
+      eventStatus.last_changed = new Date(eventStatus.last_changed);
 
-/**
- * Blurs the given image located in the given bucket using ImageMagick.
- */
-async function blurImage(filePath, bucketName, metadata) {
-  const tempLocalFile = path.join(os.tmpdir(), filePath);
-  const tempLocalDir = path.dirname(tempLocalFile);
-  const bucket = admin.storage().bucket(bucketName);
-
-  // Create the temp directory where the storage file will be downloaded.
-  await mkdirp(tempLocalDir);
-  console.log('Temporary directory has been created', tempLocalDir);
-
-  // Download file from bucket.
-  await bucket.file(filePath).download({destination: tempLocalFile});
-  console.log('The file has been downloaded to', tempLocalFile);
-
-  // Blur the image using ImageMagick.
-  await spawn('convert', [tempLocalFile, '-channel', 'RGBA', '-blur', '0x8', tempLocalFile]);
-  console.log('Blurred image created at', tempLocalFile);
-
-  // Uploading the Blurred image.
-  await bucket.upload(tempLocalFile, {
-    destination: `${BLURRED_FOLDER}/${filePath}`,
-    metadata: {metadata: metadata}, // Keeping custom metadata.
-  });
-  console.log('Blurred image uploaded to Storage at', filePath);
-
-  // Clean up the local file
-  fs.unlinkSync(tempLocalFile);
-  console.log('Deleted local file', filePath);
-}
+      // ... and write it to Firestore.
+      return userStatusFirestoreRef.set(eventStatus);
+    });
+// [END presence_sync_function]

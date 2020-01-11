@@ -56,7 +56,7 @@ function saveMessage(messageText) {
     profilePicUrl: getProfilePicUrl(),
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
   }).catch(function(error) {
-    console.error('Error writing new message to Database', error);
+    console.error('Error writing new message to Database : ' + messageText, error);
   });
 }
 

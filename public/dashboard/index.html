@@ -5,7 +5,7 @@
     <meta name="description" content="Eva Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
-    <link href="styles/allpages.css" rel="stylesheet">
+    <link href="/styles/allpages.css" rel="stylesheet">
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -23,13 +23,22 @@
 
     <!-- App Styling -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="styles/dash.css">
+    <link rel="stylesheet" href="/styles/dash.css">
 
     <!-- Enable First Input Delay polyfill library. -->
     <script type="text/javascript">!function(n,e){var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";function p(n,c){t||(t=c,o=n,i=new Date,w(e),s())}function s(){o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])}function l(t){if(t.cancelable){var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;"pointerdown"==t.type?function(t,o){function i(){p(t,o),r()}function c(){r()}function r(){e(a,i,f),e(u,c,f)}n(a,i,f),n(u,c,f)}(o,t):p(o,t)}}function w(n){["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})}w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}}(addEventListener,removeEventListener);</script>
 
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script>
+    function areYouInOrOut() {
+  //checks if the user is signed in
+  if (firebase.auth().currentUser == null) {
+    console.log("User logged out, redirecting to front page!");
+    window.location.replace("https://app.evaapp.xyz/dashboard");
+  }}
+  areYouInOrOut();
+</script>
 </head>
 <body>
 
@@ -37,7 +46,7 @@
 <header class="mdc-top-app-bar">
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <button class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons" onclick='drawer.open = !drawer.open'>menu</button>
+            <button onclick="new mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer')).open = !new mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer')).open;" class="mdc-top-app-bar__navigation-icon mdc-icon-button material-icons">menu</button>
             <a class="mdc-top-app-bar__title" href="https://www.webdenim.io" target="_blank" style="color: inherit;font-family: 'Lexend Deca';">Eva</a>
           </section>
         </div>
@@ -58,6 +67,9 @@
                 <a class="mdc-list-item demo-drawer-list-item" href="#">
                         <span class="mdi mdi-leaf mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>Meditation
                 </a>
+                <a class="mdc-list-item demo-drawer-list-item" href="#">
+                  <span class="mdi mdi-book mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>Planner
+          </a>
               </div>
       
               <hr class="mdc-list-divider">
@@ -66,7 +78,7 @@
                 <a class="mdc-list-item demo-drawer-list-item" href="#">
                         <span class="mdi mdi-account-circle-outline mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>My Eva
                 </a>
-                <a class="mdc-list-item demo-drawer-list-item" href="#">
+                <a class="mdc-list-item demo-drawer-list-item" href="#" onclick='signOutOfDash()'>
                  <span class="mdi mdi-logout mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>Log Out
                 </a>
                 <a class="mdc-list-item demo-drawer-list-item" href="#">
@@ -92,7 +104,7 @@
           <div class='jfrwirwwuowrorw '>
         <button class="mdc-button mdc-button--raised" style="background:#536dfe">
                 <div class="mdc-button__ripple"></div>
-                <span class="mdi mdi-teach mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;margin-bottom: 10px;color:#ffffff;"></span>
+                <span class="mdi mdi-account-search mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;margin-bottom: 10px;color:#ffffff;"></span>
                 <span class="mdc-button__label" id='nevergonnagiveuup'>Find Tutors</span>
               </button>
               
@@ -124,7 +136,7 @@
 <script src="/__/firebase/init.js"></script>
 <script src='https://evaapp.xyz/js/sha3.min.js'></script>
 
-<script src="scripts/newgroup.js" ></script>
+<script src="/scripts/newgroup.js" ></script>
 <script>
 </script>
 

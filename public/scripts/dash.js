@@ -7,16 +7,16 @@ const topAppBarEl = document.querySelector('.mdc-top-app-bar');
 const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarEl);
 
 topAppBar.setScrollTarget(document.querySelector('.main-content'));
-topAppBar.listen('MDCTopAppBar:nav', () => {
-  drawer.open = !drawer.open;
-});
+//topAppBar.listen('MDCTopAppBar:nav', () => {
+//  drawer.open = !drawer.open;
+//});
 
 function replaceTherapy() {
   document.getElementById("nevergonnagiveuup").innerHTML = "Find Therapists"
 }
 
 function replaceTutor() {
-  document.getElementById("nevergonnagiveuup").innerHTML = "Find Tutor"
+  document.getElementById("nevergonnagiveuup").innerHTML = "Find Tutors"
 }
 
 // Returns the signed-in user's display name.
@@ -33,4 +33,10 @@ function writeToUserAccountTest(testingxkcd) {
   }).catch(function(error) {
     console.error('Error writing new message to Database', error);
   });
+}
+
+function signOutOfDash() {
+  // Sign out of Firebase.
+  firebase.auth().signOut();
+  window.location = 'https://app.evaapp.xyz';
 }

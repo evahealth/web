@@ -35,7 +35,7 @@ function joeMumSignIn(passProviderA) {
     userMeme = firebase.auth().currentUser;
     if (isUserSignedIn() == true) {
         console.log("User is logged in, redirecting!");
-        window.location.replace("https://app.evaapp.xyz/dashboard.html");
+        window.location.replace("https://app.evaapp.xyz/dashboard");
     } else {
         signInMain(passProviderA);
     }
@@ -44,6 +44,6 @@ function joeMumSignIn(passProviderA) {
 function instaDash() {
     if (isUserSignedIn() == true) {
         console.log("User is logged in, redirecting!");
-        window.location.replace("https://app.evaapp.xyz/dashboard.html");
+        window.location.replace("https://app.evaapp.xyz/dashboard");
     }
 }
