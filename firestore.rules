@@ -2,10 +2,11 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /rooms/chat/{document=**} {
+      //allow read, write: if request.auth.uid in get(/databases/$(database)/documents/rooms/metadata/chatperms/$(groupid).data.uidsAllowed);
       allow read: if request.auth.uid != null;
       allow write: if request.auth.uid != null;
     }
-    match /rooms/perms/{document=**} {
+    match /rooms/metadata/chatperms/{document=**} {
       allow read: if request.auth.uid != null;
       allow write: if false;
     }
