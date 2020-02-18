@@ -49,6 +49,8 @@ chatRoomDir.collection(groups_).get().then(sub => {
 
 // Saves a new message on the Firebase DB.
 function saveMessage(messageText) {
+  //Update Each user's inbox with txt:
+  updateEachUsersInbox(messageText);
   // Add a new message entry to the Firebase database.
   return chatRoomDir.collection(groups_).add({
     name: getUserName(),
@@ -70,11 +72,12 @@ function arrayContains(needle, arrhaystack)
     return (arrhaystack.indexOf(needle) > -1);
 }
 
+var metadataA = firebase.firestore().collection("rooms").doc("metadata").collection("details").doc(groups_);
+
 //update users in room
 function userInRoomUpdate() {
   //Add user to list of users inside chatroom
   //details reference location
-  var metadataA = firebase.firestore().collection("rooms").doc("metadata").collection("details").doc(groups_);
   console.log(metadataA);
 
   metadataA.get().then(function(doc) {
@@ -103,6 +106,59 @@ function userInRoomUpdate() {
   }
 
 })}
+
+function updateEachUsersInbox (msgForInbox) {
+   
+  //read seperate collection "name" which stores usually not changing data such as the name of the room and the type, be it therapy or tutoring, or whatever
+  firebase.firestore().collection("rooms").doc("metadata").collection("name").doc(groups_).get().then(function(updateDocName) {
+    console.log(updateDocName.data())
+
+  metadataA.get().then(function(updateDoc69) {
+    console.log("getFunction metadataA");
+    console.log(updateDoc69)
+    console.log(updateDoc69.data())
+    
+    updateDoc69.data().usersInRoom.forEach(function(element){
+      console.log("current user inbox to write to", element)
+
+      roomPlace = "";
+      
+      //each user, or element update their collection
+      var inboxRef = firebase.firestore().collection("userInbox").doc(element);
+
+      console.log("chatroom type" + updateDoc69.data.type);
+
+      if (updateDocName.data().type == "tutor") {
+        console.log("type is tutor")
+        roomPlace = inboxRef.collection("tutorInbox").doc(groups_)
+      }
+
+      if (updateDocName.data().type == "therapy") {
+        console.log("type is therapy")
+        roomPlace = inboxRef.collection("therapyInbox").doc(groups_)
+      }
+
+      //finally, write to the users inbox under the group name with the name of the chatroom, msg, senderUID, and the time of msg
+      roomPlace.set({
+        name: updateDocName.data().name,
+        msg: msgForInbox,
+        senderuid: firebase.auth().currentUser.uid,
+        time: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+
+      numCallbackRuns++
+    })
+    let numCallbackRuns = 0
+    console.log("numCallbackRuns: ", numCallbackRuns)
+})})
+
+}
 
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
@@ -138,6 +194,10 @@ $("#messages").scroll(function() {
 // Saves a new message containing an image in Firebase.
 // This first saves the image in Firebase storage.
 function saveImageMessage(file) {
+
+  //Update each user's inbox saying that user sent an image:
+  updateEachUsersInbox("User Sent an Image");
+
   // 1 - We add a message with a loading icon that will get updated with the shared image.
   chatRoomDir.collection(groups_).add({
     name: getUserName(),
