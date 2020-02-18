@@ -1,12 +1,12 @@
 // Instantiate MDC Drawer
-const drawerEl = document.querySelector('.mdc-drawer');
-const drawer = new mdc.drawer.MDCDrawer.attachTo(drawerEl);
+const drawerEl = document.querySelector('.mdc-drawer')
+const drawer = new mdc.drawer.MDCDrawer.attachTo(drawerEl)
 
 // Instantiate MDC Top App Bar (required)
-const topAppBarEl = document.querySelector('.mdc-top-app-bar');
-const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarEl);
+const topAppBarEl = document.querySelector('.mdc-top-app-bar')
+const topAppBar = new mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarEl)
 
-topAppBar.setScrollTarget(document.querySelector('.main-content'));
+topAppBar.setScrollTarget(document.querySelector('.main-content'))
 //topAppBar.listen('MDCTopAppBar:nav', () => {
 //  drawer.open = !drawer.open;
 //});
@@ -43,4 +43,12 @@ function signOutOfDash() {
     console.log("Sign Out Error!");
     console.log(error);
   });
+}
+
+// Inbox Processing
+
+
+function loadSingleMsg(chatId) {
+  firebase.firestore().collection("rooms").doc("chat").collection(chatId);
+
 }

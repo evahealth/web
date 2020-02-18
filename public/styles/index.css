@@ -1,8 +1,14 @@
         #color-me-mom {
-            background: #FAFAFA;
+            background: #111111;
         }
-
-        ::-webkit-input-placeholder {
+        
+        h2
+        {color: #fafafa;}
+        
+        p
+        {color: #F5F5F5;}
+        
+       ::-webkit-input-placeholder {
             color:white;
         }
     

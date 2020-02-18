@@ -40,7 +40,7 @@
   areYouInOrOut();
 </script>
 </head>
-<body>
+<body id='bodyduh'>
 
         <!-- Top App Bar -->
 <header class="mdc-top-app-bar">
@@ -54,14 +54,14 @@
       
       <div class="app-drawer-layout mdc-top-app-bar--fixed-adjust">
         <!-- Drawer -->
-        <aside class="mdc-drawer mdc-drawer--dismissible demo-drawer">
+        <aside class="mdc-drawer mdc-drawer--dismissible demo-drawer" class='drawer-dark'>
           <nav class="mdc-drawer__drawer">
-            <nav class="mdc-drawer__content">
+            <nav class="mdc-drawer__content"  class='drawer-dark'>
               <div id="icon-with-text-demo" class="mdc-list">
-                <a class="mdc-list-item mdc-list-item--selected demo-drawer-list-item" href="#"  onclick=''>
+                <a class="mdc-list-item mdc-list-item--selected demo-drawer-list-item" href="#"  onclick='replaceTutor()'>
                         <span class="mdi mdi-school-outline mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>Tutoring
                 </a>
-                <a class="mdc-list-item demo-drawer-list-item" href="#" onclick=''>
+                <a class="mdc-list-item demo-drawer-list-item" href="#" onclick='replaceTherapy()'>
                         <span class="mdi mdi-voice mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;"></span>Therapy
                 </a>
                 <a class="mdc-list-item demo-drawer-list-item" href="#">
@@ -108,12 +108,12 @@
                 <span class="mdc-button__label" id='nevergonnagiveuup'>Find Tutors</span>
               </button>
               
-
+<!--
               <button class="mdc-button mdc-button--outlined"  style="position: absolute; right: 16px;">
                     <div class="mdc-button__ripple"></div>
                     <span class="mdi mdi-forum-outline mdc-list-item__graphic" aria-hidden="true" style="font-size: 24px;margin-bottom: 10px;color:#6200ee;"></span>
                     <span class="mdc-button__label">Ask Eva</span>
-                  </button>
+                  </button>-->
         <!--end tutor html--></div>
 
                 

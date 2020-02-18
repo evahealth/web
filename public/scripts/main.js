@@ -64,8 +64,49 @@ function saveMessage(messageText) {
 var maxMsgQueryEachTime = 32;
 var initQueryValue = 256;
 
+//Check If array contains item
+function arrayContains(needle, arrhaystack)
+{
+    return (arrhaystack.indexOf(needle) > -1);
+}
+
+//update users in room
+function userInRoomUpdate() {
+  //Add user to list of users inside chatroom
+  //details reference location
+  var metadataA = firebase.firestore().collection("rooms").doc("metadata").collection("details").doc(groups_);
+  console.log(metadataA);
+
+  metadataA.get().then(function(doc) {
+    console.log("getFunction metadataA");
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+        //prints out users in room existing
+        console.log(doc.data().usersInRoom);
+
+          //is user not inside chatDetails Already?
+          if (arrayContains(firebase.auth().currentUser.uid, doc.data().usersInRoom) == false) {
+            console.log("Adding user")
+            // Atomically add userId to the "usersInRoom" array field.
+            metadataA.update({
+              usersInRoom: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.uid)
+          });
+          } else {
+             // doc.data() will be undefined in this case
+             console.log("No such document!");
+              metadataA.set({usersInRoom: [firebase.auth().currentUser.uid] });
+          }
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    metadataA.set({usersInRoom: [firebase.auth().currentUser.uid] });
+  }
+
+})}
+
 // Loads chat messages history and listens for upcoming ones.
 function loadMessages() {
+  userInRoomUpdate()
   // Create the query to load the last 128 messages and listen for new ones.
   var query = chatRoomDir
       .collection(groups_)

@@ -7,6 +7,7 @@ html {
     flex-direction: column;
     min-height: 100%;
     margin: 0;
+    background: #111;
   }
   
   .demo-body {
@@ -65,4 +66,13 @@ html {
     padding-right: 16px;
     
     
+  }
+
+  #bodyduh {
+    background: #111;
+  }
+
+  .drawer-dark {
+    background: #121212;
+    color: #fff;
   }

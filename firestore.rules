@@ -10,6 +10,10 @@ service cloud.firestore {
       allow read: if request.auth.uid != null;
       allow write: if false;
     }
+    match /rooms/metadata/details/{document=**} {
+      allow read: if request.auth.uid != null;
+      allow write: if request.auth.uid != null;
+    }
     match /roles/{document=**} {
        allow read: if request.auth.uid != null;
     }
@@ -23,6 +27,9 @@ service cloud.firestore {
     match /status/{statusuid} {
       // Authenticated users can retrieve only their own transactions
       allow read: if resource.data.user == request.auth.uid;
+    }
+    match /{document=**} {
+      allow read, write: if true;
     }
   }
 }
