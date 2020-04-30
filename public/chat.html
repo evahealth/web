@@ -50,9 +50,11 @@
     <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
             <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-                <a href="https://app.evaapp.xyz/">
-                    <img src="images/chatterr.png">
-                </a>
+                
+                <button id="backtodashboard" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"  onclick='dashboardBack()'>
+                    Back To Dashboard
+                </button>
+                
             </div>
             <div id="user-container">
 
@@ -134,7 +136,7 @@
 <script>
 grecaptcha.ready(function() {
     grecaptcha.execute('6LfS_MgUAAAAAPVSjy8F8g4zqjmc0PMMXRbF-Ds7', {action: 'homepage'}).then(function(token) {
-       ...
+     //  ...
     });
 });
 </script>

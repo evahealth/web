@@ -1,5 +1,10 @@
  const groups_ = getParameterByName('g');
 
+function dashboardBack() {
+  console.log("dashboardBack")
+  window.location.href = "https://app.evaapp.xyz/dashboard"
+}
+
 function signIn() {
   // Sign into Firebase using popup auth & Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -69,7 +74,10 @@ var initQueryValue = 256;
 //Check If array contains item
 function arrayContains(needle, arrhaystack)
 {
-    return (arrhaystack.indexOf(needle) > -1);
+  console.log("checking if " + needle + "inside " + arrhaystack)
+  arrResult = arrhaystack.indexOf(needle) > -1;
+  console.log("arrResult", arrResult)
+    return arrResult;
 }
 
 var metadataA = firebase.firestore().collection("rooms").doc("metadata").collection("details").doc(groups_);
@@ -95,9 +103,7 @@ function userInRoomUpdate() {
               usersInRoom: firebase.firestore.FieldValue.arrayUnion(firebase.auth().currentUser.uid)
           });
           } else {
-             // doc.data() will be undefined in this case
-             console.log("No such document!");
-              metadataA.set({usersInRoom: [firebase.auth().currentUser.uid] });
+            console.log("User IN Field!")
           }
   } else {
     // doc.data() will be undefined in this case
@@ -138,11 +144,29 @@ function updateEachUsersInbox (msgForInbox) {
         roomPlace = inboxRef.collection("therapyInbox").doc(groups_)
       }
 
+      var profilePicUrlSender;
+      var nameSender;
+
+      var user5483476 = firebase.auth().currentUser;
+
+      if (user5483476 != null) {
+        user5483476.providerData.forEach(function (profile) {
+          console.log("Sign-in provider: " + profile.providerId);
+          console.log("  Provider-specific UID: " + profile.uid);
+          console.log("  Name: " + profile.displayName);
+          console.log("  Email: " + profile.email);
+          console.log("  Photo URL: " + profile.photoURL);
+        });
+      }
+
       //finally, write to the users inbox under the group name with the name of the chatroom, msg, senderUID, and the time of msg
       roomPlace.set({
         name: updateDocName.data().name,
         msg: msgForInbox,
+        senderPic: firebase.auth().currentUser.photoURL,
+        senderName: firebase.auth().currentUser.displayName,
         senderuid: firebase.auth().currentUser.uid,
+        group: groups_,
         time: firebase.firestore.FieldValue.serverTimestamp()
     })
     .then(function() {

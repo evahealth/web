@@ -29,7 +29,7 @@ service cloud.firestore {
       allow read: if resource.data.user == request.auth.uid;
     }
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if request.auth.uid != null;
     }
   }
 }
